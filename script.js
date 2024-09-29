@@ -1,5 +1,5 @@
 let playerChoice = prompt("Enter your choice: rock, paper, or scissors").toLowerCase();
-while playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors" {
+while (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
     playerChoice = prompt("Invalid choice. Please enter rock, paper, or scissors.").toLowerCase();
 }
 let playerChoiceNumber;
@@ -13,16 +13,8 @@ else {
     playerChoiceNumber = 3;
 }
 let computerChoiceNumber = Math.floor(Math.random() * 3) + 1;
-let computerChoice;
-if (computerChoiceNumber === 1) {
-    computerChoice = "rock";
-}
-else if (computerChoiceNumber === 2) {
-    computerChoice = "paper";
-}
-else {
-    computerChoice = "scissors";
-}
+let choices = ["rock", "paper", "scissors"];
+let computerChoice = choices[computerChoiceNumber - 1];
 let difference = computerChoiceNumber - playerChoiceNumber;
 if (difference === 0) {
     alert(`It's a tie! You both chose ${playerChoice}.`);
