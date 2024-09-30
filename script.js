@@ -30,18 +30,26 @@ function playRound () {
         alert(`You lose! Computer chose ${computerChoice}. Score is now Player: ${playerScore}, Computer: ${computerScore}.`);
     }
 }
+
 let playerScore = 0;
 let computerScore = 0;
 let roundNumber = 0;
-while (roundNumber < 5) {
-    playRound();
-    roundNumber++;
-    if (playerScore === 3) {
-        alert("You win the game!");
-        break;
-    }
-    else if (computerScore === 3) {
-        alert("You lose the game!");
-        break;
+
+function playGame() {
+    playerScore = 0;
+    computerScore = 0;
+    roundNumber = 0;
+    
+    while (roundNumber < 5) {
+        playRound();
+        roundNumber++;
+        
+        if (playerScore === 3) {
+            alert("You win the game!");
+            break;
+        } else if (computerScore === 3) {
+            alert("You lose the game!");
+            break;
+        }
     }
 }
