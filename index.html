@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css"></style>
 </head>
 <body>
-    <button onclick="playGame()">Start Game</button>
+    <div class="container" id="choices">
+        <button id="rockbtn">Rock</button> 
+        <button id="paperbtn">Paper</button>
+        <button id="scissorsbtn">Scissors</button>
+    </div>
+    <button id="playbtn">Start Game</button>
+    <div class="container"></div>
+        <p id="display"></p>
+    </div>
 </body>
 </html>

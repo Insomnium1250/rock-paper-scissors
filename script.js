@@ -14,15 +14,15 @@ function playRound () {
     switch(difference){
         case 0:
             roundNumber--;
-            alert(`It's a tie! You both chose ${playerChoice}. Score is now Player: ${playerScore}, Computer: ${computerScore}.`);
+            display.textContent = `It's a tie! You both chose ${playerChoice}. Score is now Player: ${playerScore}, Computer: ${computerScore}.`;
             break;
         case 2:
             computerScore++;
-            alert(`You lose! Computer chose ${computerChoice}. Score is now Player: ${playerScore}, Computer: ${computerScore}.`);
+            display.textContent = `You lose! Computer chose ${computerChoice}. Score is now Player: ${playerScore}, Computer: ${computerScore}.`;
             break;
         default:
             playerScore++;
-            alert(`You win! Computer chose ${computerChoice}. Score is now Player: ${playerScore}, Computer: ${computerScore}.`);
+            display.textContent = `You win! Computer chose ${computerChoice}. Score is now Player: ${playerScore}, Computer: ${computerScore}.`;
             break;
     } 
 }
@@ -31,16 +31,32 @@ function playGame() {
     playerScore = 0;
     computerScore = 0;
     roundNumber = 0;
-    
-    while (roundNumber < 5) {
-        roundNumber++;
-        playRound();
-        if (playerScore === 3) {
-            alert("You win the game!");
-            break;
-        } else if (computerScore === 3) {
-            alert("You lose the game!");
-            break;
+
+    function nextRound() {
+        if (roundNumber < 5) {
+            roundNumber++;
+            playRound();
+            if (playerScore === 3) {
+                display.textContent = "You win the game!";
+                return;  // Stop the game
+            } else if (computerScore === 3) {
+                display.textContent = "You lose the game!";
+                return;  // Stop the game
+            }
+            setTimeout(nextRound, 1000);  // Delay for 1 second between rounds
         }
     }
+
+    nextRound();  // Start the game loop
 }
+
+const display = document.querySelector("#display")
+const playbtn = document.querySelector("#playbtn");
+const rockbtn = document.querySelector("#rockbtn");
+const paperbtn = document.querySelector("#paperbtn");
+const scissorsbtn = document.querySelector("#scissorsbtn");
+
+playbtn.addEventListener("click", () => {
+    playGame();
+});
+
